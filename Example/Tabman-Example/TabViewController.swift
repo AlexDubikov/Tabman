@@ -115,8 +115,19 @@ class TabViewController: TabmanViewController, PageboyViewControllerDataSource {
             let viewController = storyboard.instantiateViewController(withIdentifier: "ChildViewController") as! ChildViewController
             viewController.index = i + 1
             
-            tabBarItems.append(TabmanBarItem(title: String(format: "Page No. %i", viewController.index!)))
-//            tabBarItems.append(TabmanBarItem(image: UIImage(named: "ic_home")!))
+            let string = String(format: "Page No. %i", viewController.index!)
+            
+            let attributedString = NSMutableAttributedString(string: string)
+            let attributes: [String : Any] = [ NSKernAttributeName: 3,
+                                               NSFontAttributeName: UIFont.systemFont(ofSize: 11),
+                                               NSForegroundColorAttributeName: UIColor.white]
+            let attributesLastLetter: [String : Any]  = [ NSFontAttributeName: UIFont.systemFont(ofSize: 11),
+                                                          NSForegroundColorAttributeName: UIColor.white]
+            
+            attributedString.addAttributes(attributes, range: NSRange(location: 0, length: string.characters.count - 1))
+            attributedString.addAttributes(attributesLastLetter, range: NSRange(location: string.characters.count - 1, length: 1))
+
+            tabBarItems.append(TabmanBarItem(attributedTitle: attributedString))
             
             viewControllers.append(viewController)
         }

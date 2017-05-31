@@ -60,7 +60,18 @@ class TabmanItemColorCrossfadeTransition: TabmanItemTransition {
         
         targetButton.tintColor = targetColor
         targetButton.setTitleColor(targetColor, for: .normal)
+        
+        if let targetColor = targetColor,
+            let newString = targetButton.getAttributedStringWith(color: targetColor) {
+            targetButton.setAttributedTitle(newString, for: .normal)
+        }
+        
         oldTargetButton.tintColor = oldTargetColor
         oldTargetButton.setTitleColor(oldTargetColor, for: .normal)
+        
+        if let oldTargetColor = oldTargetColor,
+            let oldString = oldTargetButton.getAttributedStringWith(color: oldTargetColor) {
+            oldTargetButton.setAttributedTitle(oldString, for: .normal)
+        }
     }
 }

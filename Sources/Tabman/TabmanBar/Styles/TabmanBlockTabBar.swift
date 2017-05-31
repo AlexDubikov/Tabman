@@ -39,6 +39,9 @@ internal class TabmanBlockTabBar: TabmanStaticButtonBar {
             self.updateButtonsInView(view: self.buttonContentView, update: { (button) in
                 button.tintColor = color
                 button.setTitleColor(color, for: .normal)
+                if let newString = button.getAttributedStringWith(color: color) {
+                    button.setAttributedTitle(newString, for: .normal)
+                }
             })
         }
     }
@@ -50,6 +53,9 @@ internal class TabmanBlockTabBar: TabmanStaticButtonBar {
             self.updateButtonsInView(view: self.maskContentView, update: { (button) in
                 button.tintColor = selectedColor
                 button.setTitleColor(selectedColor, for: .normal)
+                if let newString = button.getAttributedStringWith(color: selectedColor) {
+                    button.setAttributedTitle(newString, for: .normal)
+                }
             })
         }
     }
@@ -87,6 +93,9 @@ internal class TabmanBlockTabBar: TabmanStaticButtonBar {
         self.addAndLayoutBarButtons(toView: maskContentView, items: items) { (button, previousButton) in
             button.tintColor = self.selectedColor
             button.setTitleColor(self.selectedColor, for: .normal)
+            if let newString = button.getAttributedStringWith(color: self.selectedColor) {
+                button.setAttributedTitle(newString, for: .normal)
+            }
         }
         
         self.buttonContentView = buttonContentView

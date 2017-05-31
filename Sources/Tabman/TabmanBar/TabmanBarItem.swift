@@ -15,6 +15,8 @@ public struct TabmanBarItem: Any {
     
     /// The title to display for the item.
     public private(set) var title: String?
+    /// The title to display for the item.
+    public private(set) var attributedTitle: NSAttributedString?
     /// The image to display for the item.
     public private(set) var image: UIImage?
     
@@ -25,6 +27,13 @@ public struct TabmanBarItem: Any {
     /// - Parameter title: The title to display.
     public init(title: String) {
         self.title = title
+    }
+    
+    /// Create an item with an attributed title.
+    ///
+    /// - Parameter attributedTitle: The title to display.
+    public init(attributedTitle: NSAttributedString) {
+        self.attributedTitle = attributedTitle
     }
     
     /// Create an item with an image.

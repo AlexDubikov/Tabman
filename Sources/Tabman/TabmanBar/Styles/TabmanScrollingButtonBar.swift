@@ -57,6 +57,10 @@ internal class TabmanScrollingButtonBar: TabmanButtonBar {
             self.updateButtons(withContext: .unselected, update: { button in
                 button.setTitleColor(color, for: .normal)
                 button.setTitleColor(color.withAlphaComponent(0.3), for: .highlighted)
+                if let newString = button.getAttributedStringWith(color: color) {
+                    button.setAttributedTitle(newString, for: .normal)
+                    button.setAttributedTitle(button.getHighlightedAttributedString(), for: .highlighted)
+                }
                 button.tintColor = color
             })
         }
@@ -67,6 +71,10 @@ internal class TabmanScrollingButtonBar: TabmanButtonBar {
             
             self.focussedButton?.setTitleColor(selectedColor, for: .normal)
             self.focussedButton?.tintColor = selectedColor
+            if let newString = focussedButton?.getAttributedStringWith(color: selectedColor) {
+                focussedButton?.setAttributedTitle(newString, for: .normal)
+                focussedButton?.setAttributedTitle(focussedButton?.getHighlightedAttributedString(), for: .highlighted)
+            }
         }
     }
     
@@ -106,6 +114,10 @@ internal class TabmanScrollingButtonBar: TabmanButtonBar {
             
             button.setTitleColor(self.color, for: .normal)
             button.setTitleColor(self.color.withAlphaComponent(0.3), for: .highlighted)
+            if let newString = button.getAttributedStringWith(color: color) {
+                button.setAttributedTitle(newString, for: .normal)
+                button.setAttributedTitle(button.getHighlightedAttributedString(), for: .highlighted)
+            }
             button.addTarget(self, action: #selector(tabButtonPressed(_:)), for: .touchUpInside)
             
             // add a minimum width constraint to button

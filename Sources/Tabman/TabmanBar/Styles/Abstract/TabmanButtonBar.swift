@@ -44,8 +44,18 @@ internal class TabmanButtonBar: TabmanBar {
             
             focussedButton?.setTitleColor(self.selectedColor, for: .normal)
             focussedButton?.tintColor = self.selectedColor
+
+            if let newString = focussedButton?.getAttributedStringWith(color: self.selectedColor) {
+                focussedButton?.setAttributedTitle(newString, for: .normal)
+            }
+            
             oldValue?.setTitleColor(self.color, for: .normal)
             oldValue?.tintColor = self.color
+
+            if let oldString = oldValue?.getAttributedStringWith(color: self.color) {
+                oldValue?.setAttributedTitle(oldString, for: .normal)
+            }
+            
         }
     }
     
@@ -156,7 +166,10 @@ internal class TabmanButtonBar: TabmanBar {
             let button = UIButton(forAutoLayout: ())
             view.addSubview(button)
             
-            if let title = item.title {
+            if let attributedTitle = item.attributedTitle {
+                button.setAttributedTitle(attributedTitle, for: .normal)
+                button.setAttributedTitle(button.getHighlightedAttributedString(), for: .highlighted)
+            } else if let title = item.title {
                 button.setTitle(title, for: .normal)
             } else if let image = item.image {
                 // resize images to fit

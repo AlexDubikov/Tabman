@@ -34,6 +34,9 @@ internal class TabmanStaticButtonBar: TabmanButtonBar {
             self.updateButtons(withContext: .unselected) { (button) in
                 button.tintColor = color
                 button.setTitleColor(color, for: .normal)
+                if let newString = button.getAttributedStringWith(color: color) {
+                    button.setAttributedTitle(newString, for: .normal)
+                }
             }
         }
     }
@@ -45,6 +48,9 @@ internal class TabmanStaticButtonBar: TabmanButtonBar {
             self.updateButtons(withContext: .target) { (button) in
                 button.tintColor = selectedColor
                 button.setTitleColor(selectedColor, for: .normal)
+                if let newString = button.getAttributedStringWith(color: selectedColor) {
+                    button.setAttributedTitle(newString, for: .normal)
+                }
             }
         }
     }
