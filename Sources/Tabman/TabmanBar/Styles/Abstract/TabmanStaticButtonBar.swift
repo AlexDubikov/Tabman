@@ -78,8 +78,8 @@ internal class TabmanStaticButtonBar: TabmanButtonBar {
     override public func addIndicatorToBar(indicator: TabmanIndicator) {
         
         self.contentView.addSubview(indicator)
-        indicator.autoPinEdge(toSuperviewEdge: .bottom)
-        self.indicatorLeftMargin = indicator.autoPinEdge(toSuperviewEdge: .left, withInset: bottomOffset)
+        indicator.autoPinEdge(toSuperviewEdge: .bottom, withInset: bottomOffset)
+        self.indicatorLeftMargin = indicator.autoPinEdge(toSuperviewEdge: .left)
         self.indicatorWidth = indicator.autoSetDimension(.width, toSize: 0.0)
     }
     

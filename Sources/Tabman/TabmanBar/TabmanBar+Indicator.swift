@@ -66,5 +66,9 @@ extension TabmanBar {
         self.addIndicatorToBar(indicator: indicator!)
         self.updateForCurrentPosition()
     }
+    
+    internal func updateIndicatorBottomConstraint(bottomOffset: CGFloat) {
+        self.indicator?.autoPinEdge(toSuperviewEdge: .bottom, withInset: bottomOffset)
+    }
 
 }

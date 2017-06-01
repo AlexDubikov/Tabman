@@ -59,6 +59,7 @@ class TabViewController: TabmanViewController, PageboyViewControllerDataSource {
 //        self.bar.style = .custom(type: CustomTabmanBar.self) // uncomment to use CustomTabmanBar as style.
         let appearance = PresetAppearanceConfigs.forStyle(self.bar.style, currentAppearance: self.bar.appearance)
         appearance?.indicator.bottomOffset = 10
+        appearance?.indicator.color = UIColor.red
         self.bar.appearance = appearance
         self.updateAppearance(pagePosition: self.currentPosition?.x ?? 0.0)
         self.updateStatusLabels()

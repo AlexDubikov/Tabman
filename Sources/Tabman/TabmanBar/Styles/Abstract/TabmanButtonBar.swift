@@ -105,7 +105,7 @@ internal class TabmanButtonBar: TabmanBar {
     /// The inset at the edge of the bar items.
     public var bottomOffset: CGFloat = Appearance.defaultAppearance.indicator.bottomOffset! {
         didSet {
-            self.updateIndicator(forPreferredStyle: preferredIndicatorStyle)
+            self.updateIndicatorBottomConstraint(bottomOffset: bottomOffset)
             self.layoutIfNeeded()
             self.updateForCurrentPosition()
         }
