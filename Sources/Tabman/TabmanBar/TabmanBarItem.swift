@@ -15,7 +15,7 @@ public struct TabmanBarItem: Any {
     
     /// The title to display for the item.
     public private(set) var title: String?
-    /// The title to display for the item.
+    /// Attributed title to display for the item.
     public private(set) var attributedTitle: NSAttributedString?
     /// The image to display for the item.
     public private(set) var image: UIImage?

@@ -29,6 +29,8 @@ public extension TabmanBar {
             public var compresses: Bool?
             /// Whether to use rounded corners on line indicators.
             public var useRoundedCorners: Bool?
+            /// Offset from bottom of the tabbar
+            public var bottomOffset: CGFloat?
         }
         
         public struct Interaction {
@@ -117,6 +119,7 @@ public extension TabmanBar {
             self.indicator.useRoundedCorners = false
             self.indicator.lineWeight = .normal
             self.indicator.color = UIView.defaultTintColor
+            self.indicator.bottomOffset = 0
             
             // state
             self.state.selectedColor = .black

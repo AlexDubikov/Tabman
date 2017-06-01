@@ -102,7 +102,14 @@ internal class TabmanButtonBar: TabmanBar {
             self.updateForCurrentPosition()
         }
     }
-    
+    /// The inset at the edge of the bar items.
+    public var bottomOffset: CGFloat = Appearance.defaultAppearance.indicator.bottomOffset! {
+        didSet {
+            self.updateIndicator(forPreferredStyle: preferredIndicatorStyle)
+            self.layoutIfNeeded()
+            self.updateForCurrentPosition()
+        }
+    }
     //
     // MARK: TabmanBar Lifecycle
     //
@@ -136,6 +143,9 @@ internal class TabmanButtonBar: TabmanBar {
         
         let edgeInset = appearance.layout.edgeInset
         self.edgeInset = edgeInset ?? defaultAppearance.layout.edgeInset!
+        
+        let bottomOffset = appearance.indicator.bottomOffset
+        self.bottomOffset = bottomOffset ?? defaultAppearance.indicator.bottomOffset!
         
         // update left margin for progressive style
         if self.indicator?.isProgressiveCapable ?? false {
